@@ -29,8 +29,7 @@
                            Margin="3"/>
                 <TextBox Grid.Column="1"
                          Background="LightGray"
-                         Margin="0, 3, 3, 3"
-                         BorderThickness="0"/>
+                         Margin="0, 3, 3, 3"/>
             </Grid>
             <Grid Grid.Row="1"
                   Margin="3">
@@ -47,8 +46,7 @@
             </Grid.RowDefinitions>
             <Grid Grid.Row="0">
                 <TextBox FontSize="50"
-                         BorderThickness="0"
-                         Text="Note"/>
+                         BorderThickness="0"/>
             </Grid>
             <Grid Grid.Row="1"
                     Margin="0, 10, 0, 0">
