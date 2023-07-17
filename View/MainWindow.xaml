@@ -8,8 +8,8 @@
         Title="Notes" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150" 
-                              MinWidth="150" 
+            <ColumnDefinition Width="175" 
+                              MinWidth="175" 
                               MaxWidth="300"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
@@ -18,6 +18,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Grid Grid.Row="0" Margin="3" >
                 <Grid.ColumnDefinitions>
@@ -36,6 +37,23 @@
                 <ListBox Margin="3"
                          Background="LightGray"
                          BorderThickness="0"/>
+            </Grid>
+            <Grid Grid.Row="2"
+                  Margin="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0"
+                        Height="25"
+                        Width="75"
+                        Margin="3"
+                        Content="Add"/>
+                <Button Grid.Column="1"
+                        Height="25"
+                        Width="75"
+                        Margin="0, 3, 3, 3"
+                        Content="Delete"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="1"  
