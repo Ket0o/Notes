@@ -4,10 +4,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "View", "View\View.csproj", "{3DF33090-913E-4418-93B0-807A4BFD5668}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0F35085A-9D43-4392-B569-72E9D5FD4383} = {0F35085A-9D43-4392-B569-72E9D5FD4383}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{D23EB995-E4FC-4CD9-80FC-DE754C01AC6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{D23EB995-E4FC-4CD9-80FC-DE754C01AC6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModel", "ViewModel\ViewModel.csproj", "{0F35085A-9D43-4392-B569-72E9D5FD4383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ViewModel", "ViewModel\ViewModel.csproj", "{0F35085A-9D43-4392-B569-72E9D5FD4383}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D23EB995-E4FC-4CD9-80FC-DE754C01AC6F} = {D23EB995-E4FC-4CD9-80FC-DE754C01AC6F}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
