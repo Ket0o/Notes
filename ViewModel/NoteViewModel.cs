@@ -12,7 +12,7 @@ namespace ViewModel
     {
         public Note Note { get; } = new Note();
 
-        public string Titile
+        public string Title
         {
             get => Note.Title;
             set

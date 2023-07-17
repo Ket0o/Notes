@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -8,16 +9,32 @@ using ViewModel.Base;
 
 namespace ViewModel
 {
-    public class MainViewModel: BaseViewModel
+    public partial class MainViewModel: BaseViewModel
     {
-        private NoteViewModel _selectedNote;
+        private NoteViewModel? _selectedNote;
+
+        [RelayCommand]
+        private void AddNote()
+        {
+            SelectedNote = null;
+            NoteViewModel note = new NoteViewModel();
+            note.Title = "Note";
+            SelectedNote = note;
+            Notes.Add(SelectedNote);
+        }
+
+        [RelayCommand]
+        private void DeleteNote()
+        {
+            Notes.Remove(SelectedNote);
+        }
 
         public ObservableCollection<NoteViewModel> Notes { get; } =
             new ObservableCollection<NoteViewModel>();
 
-        public NoteViewModel SelectedNote 
-        { 
-            get { return _selectedNote;} 
+        public NoteViewModel SelectedNote
+        {
+            get => _selectedNote;
             set
             {
                 _selectedNote = value;
