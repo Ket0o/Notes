@@ -42,8 +42,8 @@
                          Background="LightGray"
                          BorderThickness="0"
                          ItemsSource="{Binding Notes, 
-                    UpdateSourceTrigger=PropertyChanged}"
-                         SelectedItem="{Binding SelectedNote}"
+                            UpdateSourceTrigger=PropertyChanged}"
+                         SelectedItem="{Binding SelectedNote, UpdateSourceTrigger=PropertyChanged}"
                          DisplayMemberPath="Title"/>
             </Grid>
             <Grid Grid.Row="2"
@@ -75,14 +75,14 @@
             <Grid Grid.Row="0">
                 <TextBox FontSize="50"
                          BorderThickness="0"
-                         Text="{Binding SelectedNote.Title}"/>
+                         Text="{Binding SelectedNote.Title, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             <Grid Grid.Row="1"
                     Margin="0, 10, 0, 0">
                 <TextBox TextWrapping="Wrap"
                          VerticalScrollBarVisibility="Auto"
                          BorderThickness="0"
-                         Text="{Binding SelectedNote.Text}"/>
+                         Text="{Binding SelectedNote.Text, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
         </Grid>
         <GridSplitter Grid.Column="0" Width="2" Background="White"/>

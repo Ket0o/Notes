@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using ViewModel.Base;
+using System.Threading.Tasks;   
 using Model;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ViewModel
 {
-    public class NoteViewModel: BaseViewModel
+    public class NoteViewModel: ObservableObject
     {
         public Note Note { get; } = new Note();
 
