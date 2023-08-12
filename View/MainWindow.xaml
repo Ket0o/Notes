@@ -43,7 +43,8 @@
                          BorderThickness="0"
                          ItemsSource="{Binding Notes, 
                             UpdateSourceTrigger=PropertyChanged}"
-                         SelectedItem="{Binding SelectedNote, UpdateSourceTrigger=PropertyChanged}"
+                         SelectedItem="{Binding SelectedNote, 
+                    UpdateSourceTrigger=PropertyChanged}"
                          DisplayMemberPath="Title"/>
             </Grid>
             <Grid Grid.Row="2"

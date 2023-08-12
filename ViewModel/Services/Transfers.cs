@@ -10,6 +10,7 @@ namespace ViewModel.Services
 {
     public static class Transfers
     {
+        // TODO: работает не корректно, переписывает все объекты в один
         public static List<NoteDTO> TransferNoteVMToNoteDTO(ObservableCollection<NoteViewModel> notesViewModel)
         {
             var notesDTO = new List<NoteDTO>();
