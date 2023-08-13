@@ -13,6 +13,9 @@ namespace ViewModel
 {
     public partial class MainViewModel: ObservableObject
     {
+        [ObservableProperty]
+        private bool _isEdit = false;
+
         private NoteViewModel _selectedNote;
 
         [RelayCommand]
@@ -23,12 +26,12 @@ namespace ViewModel
             note.Text = "1";
             if (Notes.Contains(note))
             {
-                NotesSerializer.Serialize(Notes);
+                NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
             }
             else
             {
                 Notes.Add(note);
-                NotesSerializer.Serialize(Notes);
+                NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
             }
             SelectedNote = Notes[Notes.Count - 1];
         }
@@ -37,7 +40,7 @@ namespace ViewModel
         private void DeleteNote()
         {
             Notes.Remove(SelectedNote);
-            NotesSerializer.Serialize(Notes);
+            NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
         }
 
         public ObservableCollection<NoteViewModel> Notes { get; } = NotesSerializer.Deserialize();
@@ -48,7 +51,9 @@ namespace ViewModel
             set
             {
                 _selectedNote = value;
+                IsEdit = true;
                 OnPropertyChanged();
+                NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
             }
         }
     }

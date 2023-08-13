@@ -19,17 +19,6 @@ namespace Model.Services
             Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
             + @"\Notes\notes.json";
 
-        public static void Serialize(ObservableCollection<NoteViewModel>? notes) 
-        {
-            if (!Directory.Exists(Path.GetDirectoryName(MyDocumentsPath)))
-                Directory.CreateDirectory(Path.GetDirectoryName(MyDocumentsPath));
-
-            using (StreamWriter writer = new StreamWriter(MyDocumentsPath))
-            {
-                writer.Write(JsonConvert.SerializeObject(notes));
-            }
-        }
-
         public static void Serialize(List<NoteDTO>? notes)
         {
             if (!Directory.Exists(Path.GetDirectoryName(MyDocumentsPath)))

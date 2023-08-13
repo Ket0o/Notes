@@ -7,6 +7,16 @@
         xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
         mc:Ignorable="d"
         Title="Notes" Height="450" Width="800" MinHeight="450" MinWidth="800">
+    <Window.Resources>
+        <DataTemplate x:Key="noteTemplate">
+            <StackPanel Margin="3" Orientation="Horizontal">
+                <TextBlock Text="{Binding Title}"
+                           Validation.ErrorTemplate="{x:Null}"
+                           FontSize="12"/>
+                <Ellipse Width="5" Height="5" Fill="#FF9BBAC7" Margin="3"/>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
@@ -45,7 +55,7 @@
                             UpdateSourceTrigger=PropertyChanged}"
                          SelectedItem="{Binding SelectedNote, 
                     UpdateSourceTrigger=PropertyChanged}"
-                         DisplayMemberPath="Title"/>
+                         ItemTemplate="{StaticResource noteTemplate}"/>
             </Grid>
             <Grid Grid.Row="2"
                   Margin="3">
