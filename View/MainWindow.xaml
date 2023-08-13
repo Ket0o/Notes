@@ -13,7 +13,8 @@
                 <TextBlock Text="{Binding Title}"
                            Validation.ErrorTemplate="{x:Null}"
                            FontSize="12"/>
-                <Ellipse Width="5" Height="5" Fill="#FF9BBAC7" Margin="3"/>
+                <Ellipse Width="5" Height="5" Fill="#FF9BBAC7" Margin="3"
+                         Visibility="{Binding Path=IsEdit}"/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
