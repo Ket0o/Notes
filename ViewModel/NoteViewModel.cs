@@ -32,6 +32,26 @@ namespace ViewModel
             }
         }
 
+        public bool IsEdit
+        {
+            get => Note.IsEdit;
+            set
+            {
+                Note.IsEdit = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public int Id
+        {
+            get => Note.Id;
+        }
+
+        public int AllNotesCount
+        {
+            get => Note.AllNotesCount;
+        }
+
         public NoteViewModel()
         {
 

@@ -10,6 +10,14 @@ namespace Model
     {
         private string _title;
         private string _text;
+        public bool IsEdit { get; set; } = false;
+        private int _id;
+        private static int _allNotesCount;
+
+        public static int AllNotesCount
+        {
+            get => _allNotesCount;
+        }
 
         public string Title
         {
@@ -29,12 +37,23 @@ namespace Model
             }
         }
 
-        public Note() {}
+        public int Id
+        {
+            get { return _id; }
+        }
+
+        public Note() 
+        {
+            _allNotesCount ++;
+            _id = _allNotesCount;
+        }
 
         public Note(string title, string text)
         {
             Title = title;
             Text = text;
+            _allNotesCount++;
+            _id = _allNotesCount;
         }
     }
 }

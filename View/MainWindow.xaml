@@ -5,16 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:View"
         xmlns:viewModel="clr-namespace:ViewModel;assembly=ViewModel"
+        xmlns:services="clr-namespace:ValueConverters;assembly=ValueConverters"
         mc:Ignorable="d"
         Title="Notes" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Window.Resources>
+        <services:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" IsInverted="False"/>
         <DataTemplate x:Key="noteTemplate">
             <StackPanel Margin="3" Orientation="Horizontal">
                 <TextBlock Text="{Binding Title}"
                            Validation.ErrorTemplate="{x:Null}"
                            FontSize="12"/>
                 <Ellipse Width="5" Height="5" Fill="#FF9BBAC7" Margin="3"
-                         Visibility="{Binding Path=IsEdit}"/>
+                         Visibility="{Binding Enabled, 
+                    Converter={StaticResource BoolToVisibilityConverter}, 
+                    UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
         </DataTemplate>
     </Window.Resources>
@@ -66,13 +70,13 @@
                 </Grid.ColumnDefinitions>
                 <Button Grid.Column="0"
                         Height="25"
-                        Width="75"
+                        Width="auto"
                         Margin="3"
                         Content="Add"
                         Command="{Binding AddNoteCommand}"/>
                 <Button Grid.Column="1"
                         Height="25"
-                        Width="75"
+                        Width="auto"
                         Margin="0, 3, 3, 3"
                         Content="Delete"
                         Command="{Binding DeleteNoteCommand}"/>
@@ -87,14 +91,16 @@
             <Grid Grid.Row="0">
                 <TextBox FontSize="50"
                          BorderThickness="0"
-                         Text="{Binding SelectedNote.Title, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding SelectedNote.Title, UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding IsReadOnly}"/>
             </Grid>
             <Grid Grid.Row="1"
                     Margin="0, 10, 0, 0">
                 <TextBox TextWrapping="Wrap"
                          VerticalScrollBarVisibility="Auto"
                          BorderThickness="0"
-                         Text="{Binding SelectedNote.Text, UpdateSourceTrigger=PropertyChanged}"/>
+                         Text="{Binding SelectedNote.Text, UpdateSourceTrigger=PropertyChanged}"
+                         IsEnabled="{Binding IsReadOnly}"/>
             </Grid>
         </Grid>
         <GridSplitter Grid.Column="0" Width="2" Background="White"/>

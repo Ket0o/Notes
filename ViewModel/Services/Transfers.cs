@@ -20,6 +20,7 @@ namespace ViewModel.Services
                 var noteDTO = new NoteDTO();
                 noteDTO.Title = note.Title;
                 noteDTO.Text = note.Text;
+                noteDTO.Id = note.Id;
                 notesDTO.Add(noteDTO);
             }
 
