@@ -101,7 +101,10 @@
                          VerticalScrollBarVisibility="Auto"
                          BorderThickness="0"
                          Text="{Binding SelectedNote.Text, UpdateSourceTrigger=PropertyChanged}"
-                         IsEnabled="{Binding IsEnabled}"/>
+                         IsEnabled="{Binding IsEnabled}"
+                         AcceptsReturn="True"
+                         AcceptsTab="True"
+                         SpellCheck.IsEnabled="True"/>
             </Grid>
         </Grid>
         <GridSplitter Grid.Column="0" Width="2" Background="White"/>

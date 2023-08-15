@@ -9,7 +9,7 @@ namespace Model
     public class Note
     {
         private string _title;
-        private string _text;
+        public string Text { get; set; }
         public bool IsEdit { get; set; } = false;
         private int _id;
         private static int _allNotesCount;
@@ -24,16 +24,10 @@ namespace Model
             get { return _title; }
             set
             {
-                _title = value;
-            }
-        }
-
-        public string Text
-        {
-            get { return _text; }
-            set
-            {
-                _text = value;
+                if (value.Length > 0 && value.Length <= 50)
+                {
+                    _title = value;
+                }
             }
         }
 
