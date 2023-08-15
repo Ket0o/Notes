@@ -19,6 +19,7 @@ namespace ViewModel
             {
                 Note.Title = value;
                 OnPropertyChanged();
+                IsEdit = true;
             }
         }
 
@@ -29,6 +30,7 @@ namespace ViewModel
             {
                 Note.Text = value;
                 OnPropertyChanged();
+                IsEdit = true;
             }
         }
 
@@ -45,6 +47,11 @@ namespace ViewModel
         public int Id
         {
             get => Note.Id;
+            set
+            {
+                OnPropertyChanged();
+                IsEdit = false;
+            }
         }
 
         public int AllNotesCount

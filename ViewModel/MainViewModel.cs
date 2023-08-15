@@ -17,7 +17,7 @@ namespace ViewModel
         private NoteViewModel _selectedNote;
 
         [ObservableProperty]
-        private bool _isReadOnly = false;
+        private bool _isEnabled = false;
 
         [RelayCommand]
         private void AddNote()
@@ -25,6 +25,10 @@ namespace ViewModel
             var note = new NoteViewModel();
             note.Title = "1";
             note.Text = "1";
+            if (SelectedNote != null)
+            {
+                SelectedNote.IsEdit = true;
+            }
             if (Notes.Contains(note))
             {
                 NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
@@ -42,15 +46,43 @@ namespace ViewModel
                     SelectedNote.IsEdit = false;
                 }
             }
-            SelectedNote = Notes[Notes.Count - 1];
-            IsReadOnly = true;
+            SelectedNote = Notes.Last();
+            IsEnabled = true;
         }
 
         [RelayCommand]
         private void DeleteNote()
         {
-            Notes.Remove(SelectedNote);
-            IsReadOnly = false;
+            if (Notes.Count > 0)
+            {
+                if (SelectedNote == Notes.Last())
+                {
+                    Notes.Remove(SelectedNote);
+                    if (Notes.Count >= 1)
+                    {
+                        SelectedNote = Notes.Last();
+                        IsEnabled = true;
+                    }
+                    else
+                    {
+                        SelectedNote = null;
+                        IsEnabled = false;
+                    }
+                }
+                else
+                {
+                    foreach (var note in Notes)
+                    {
+                        if (SelectedNote == note)
+                        {
+                            Notes.Remove(SelectedNote);
+                            SelectedNote = note;
+                            IsEnabled = true;
+                            break;
+                        }
+                    }
+                }
+            }
             NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
             if (SelectedNote != null)
             {
@@ -64,35 +96,22 @@ namespace ViewModel
         {
             get => _selectedNote;
             set
-            {   
-                if (value == null)
+            {
+                if (value != null)
                 {
-                    _selectedNote = null;
-                    IsReadOnly = false;
-                    OnPropertyChanged();
-                    NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
+                    var keepId = value.Id;
+                    if (_selectedNote != null)
+                    {
+                        if (_selectedNote.Id != keepId)
+                        {
+                            _selectedNote.IsEdit = false;
+                        }
+                    }
                 }
-                else if (_selectedNote == null)
-                {
-                    _selectedNote = value;
-                    _selectedNote.IsEdit = true;
-                    IsReadOnly = true;
-                }
-                else if (_selectedNote.Id == value.Id)
-                {
-                    _selectedNote = value;
-                    IsReadOnly = true;
-                    _selectedNote.IsEdit = true;
-                }
-                else
-                {
-                    _selectedNote = value;
-                    IsReadOnly = true;
-                    _selectedNote.IsEdit = false;
-                }               
+                _selectedNote = value;
+                IsEnabled = true;
                 OnPropertyChanged();
                 NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
-                _selectedNote.IsEdit = false;
             }
         }
     }

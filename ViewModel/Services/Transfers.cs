@@ -10,11 +10,10 @@ namespace ViewModel.Services
 {
     public static class Transfers
     {
-        // TODO: работает не корректно, переписывает все объекты в один
-        public static List<NoteDTO> TransferNoteVMToNoteDTO(ObservableCollection<NoteViewModel> notesViewModel)
+        public static List<NoteDTO> TransferNoteVMToNoteDTO(
+            ObservableCollection<NoteViewModel> notesViewModel)
         {
             var notesDTO = new List<NoteDTO>();
-
             foreach(NoteViewModel note in notesViewModel)
             {
                 var noteDTO = new NoteDTO();
@@ -23,7 +22,6 @@ namespace ViewModel.Services
                 noteDTO.Id = note.Id;
                 notesDTO.Add(noteDTO);
             }
-
             return notesDTO;
         }
     }

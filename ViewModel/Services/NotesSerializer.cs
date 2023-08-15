@@ -23,7 +23,6 @@ namespace Model.Services
         {
             if (!Directory.Exists(Path.GetDirectoryName(MyDocumentsPath)))
                 Directory.CreateDirectory(Path.GetDirectoryName(MyDocumentsPath));
-
             using (StreamWriter writer = new StreamWriter(MyDocumentsPath))
             {
                 writer.Write(JsonConvert.SerializeObject(notes));
@@ -34,7 +33,8 @@ namespace Model.Services
         {
             if (!Directory.Exists(Path.GetDirectoryName(MyDocumentsPath)))
                 Directory.CreateDirectory(Path.GetDirectoryName(MyDocumentsPath));
-            ObservableCollection<NoteViewModel>? contacts = new ObservableCollection<NoteViewModel>();
+            ObservableCollection<NoteViewModel>? contacts = 
+                new ObservableCollection<NoteViewModel>();
             try
             {
                 using (StreamReader reader = new StreamReader(MyDocumentsPath))
