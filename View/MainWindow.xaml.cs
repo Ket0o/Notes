@@ -24,5 +24,10 @@ namespace View
         {
             InitializeComponent();
         }
+
+        private void TextBox_TouchEnter(object sender, TouchEventArgs e)
+        {
+
+        }
     }
 }

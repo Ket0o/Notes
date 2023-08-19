@@ -44,13 +44,23 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Grid.Column="0"
                            Text="Find:"
-                           Margin="3"/>
+                           Margin="3"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 <TextBox Grid.Column="1"
                          Background="LightGray"
-                         Margin="0, 3, 3, 3"/>
+                         Margin="0, 3, 3, 3"
+                         Text="{Binding SearchNoteTitle, UpdateSourceTrigger=PropertyChanged, 
+                    Mode=TwoWay}" 
+                         VerticalAlignment="Center"/>
+                <Button Grid.Column="2" Content="Find"
+                        Width="auto"
+                        Height="auto"
+                        Margin="3"
+                        Command="{Binding FindNoteCommand}" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1"
                   Margin="3">

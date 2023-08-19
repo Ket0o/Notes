@@ -17,6 +17,9 @@ namespace ViewModel
         private NoteViewModel _selectedNote;
 
         [ObservableProperty]
+        private string? _searchNoteTitle;
+
+        [ObservableProperty]
         private bool _isEnabled = false;
 
         [RelayCommand]
@@ -48,6 +51,12 @@ namespace ViewModel
             }
             SelectedNote = Notes.Last();
             IsEnabled = true;
+        }
+
+        [RelayCommand]
+        private void FindNote()
+        {
+            
         }
 
         [RelayCommand]
@@ -90,7 +99,8 @@ namespace ViewModel
             }
         }
 
-        public ObservableCollection<NoteViewModel> Notes { get; } = NotesSerializer.Deserialize();
+        public ObservableCollection<NoteViewModel> Notes { get; set; } = 
+            NotesSerializer.Deserialize();
 
         public NoteViewModel SelectedNote
         {
