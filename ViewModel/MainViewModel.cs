@@ -96,7 +96,7 @@ namespace ViewModel
         public ObservableCollection<NoteViewModel> Notes { get; set; } = 
             NotesSerializer.Deserialize();
 
-        public NoteViewModel SelectedNote
+        public NoteViewModel? SelectedNote
         {
             get => _selectedNote;
             set
