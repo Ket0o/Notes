@@ -56,11 +56,6 @@
                          Text="{Binding SearchNoteTitle, UpdateSourceTrigger=PropertyChanged, 
                     Mode=TwoWay}" 
                          VerticalAlignment="Center"/>
-                <Button Grid.Column="2" Content="Find"
-                        Width="auto"
-                        Height="auto"
-                        Margin="3"
-                        Command="{Binding FindNoteCommand}" VerticalAlignment="Center"/>
             </Grid>
             <Grid Grid.Row="1"
                   Margin="3">

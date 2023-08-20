@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Model;
 using Model.Services;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,6 @@ namespace ViewModel
     {
         private NoteViewModel _selectedNote;
 
-        [ObservableProperty]
         private string? _searchNoteTitle;
 
         [ObservableProperty]
@@ -51,12 +51,6 @@ namespace ViewModel
             }
             SelectedNote = Notes.Last();
             IsEnabled = true;
-        }
-
-        [RelayCommand]
-        private void FindNote()
-        {
-            
         }
 
         [RelayCommand]
@@ -122,6 +116,42 @@ namespace ViewModel
                 IsEnabled = true;
                 OnPropertyChanged();
                 NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
+            }
+        }
+
+        public string SearchNoteTitle
+        {
+            get => _searchNoteTitle;
+            set
+            {
+                _searchNoteTitle = value;
+                if (_searchNoteTitle != null)
+                {
+                    var flag = false;
+                    foreach(var note in Notes)
+                    {
+                        if (_searchNoteTitle == note.Title)
+                        {
+                            SelectedNote = note;
+                            flag = true;
+                            break;
+                        }
+                        else if (note.Title.StartsWith(_searchNoteTitle))
+                        {
+                            SelectedNote = note;
+                            flag = true;
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    if (!flag)
+                    {
+                        SelectedNote = null;
+                    }
+                }
+                OnPropertyChanged();
             }
         }
     }
