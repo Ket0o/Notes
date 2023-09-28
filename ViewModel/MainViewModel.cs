@@ -93,6 +93,13 @@ namespace ViewModel
             }
         }
 
+        [RelayCommand]
+        private void SaveNote()
+        {
+            NotesSerializer.Serialize(Transfers.TransferNoteVMToNoteDTO(Notes));
+            SelectedNote.IsEdit = false;
+        }
+
         public ObservableCollection<NoteViewModel> Notes { get; set; } = 
             NotesSerializer.Deserialize();
 
