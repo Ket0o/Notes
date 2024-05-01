@@ -11,6 +11,7 @@
         Title="Notes" Height="450" Width="800" MinHeight="450" MinWidth="800">
     <Window.Resources>
         <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" IsInverted="False"/>
+        <services:StringToFlowDocumentConverter x:Key="ToFlowDocumentConverter"/>
         <DataTemplate x:Key="noteTemplate">
             <StackPanel Margin="3" Orientation="Horizontal" HorizontalAlignment="Right">
                 <TextBlock Text="{Binding Title}"
